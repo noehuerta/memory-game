@@ -1,0 +1,48 @@
+
+<p>Find the matching pairs to win the game</p>
+
+<div class="gameWrapper" [ngStyle]="getWrapperStyle()">
+	<div id="card{{i}}" class="card" *ngFor="let card of totalCards; let i = index" [attr.data-index]="i" [ngStyle]="getCardStyle(i)">
+		<card-component [id]="card.id" [index]="i" (flipCard)="flipCard($event)"></card-component>
+	</div>
+</div>
+
+<div class="c-game-value" style="display: block;">
+
+	<h2>Game Values</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Number of cards</th>
+				<th>Columns</th>
+				<th>Width</th>
+				<th>Height</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td><input name="totalCards" min="2" type="number" [value]="numberOfCards" (input)="numberOfCards = $event.target.value" (change)="startGame()"></td>
+				<td><input name="numColumns" min="2" type="number" [value]="numColumns" (input)="numColumns = $event.target.value"></td>
+				<td><input name="width" min="140" type="number" [value]="cardWidth" (input)="cardWidth = $event.target.value"></td>
+				<td><input name="height" min="140" type="number" [value]="cardHeight" (input)="cardHeight = $event.target.value"></td>
+				<td>
+					<label>
+						<input type="checkbox" [checked]="isShufflingCards" (change)="isShufflingCards = !isShufflingCards">
+						Shuffle Cards
+					</label>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="newGame">
+		<button (click)="startGame()">New Game</button>
+	</div>
+	
+	<div class="c-number-of-cards-error" *ngIf="numberOfCards % 2 !== 0">
+		<p>Total number of cards is not an even number</p>
+	</div>
+
+</div>

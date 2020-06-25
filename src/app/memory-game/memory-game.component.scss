@@ -1,0 +1,27 @@
+
+.gameWrapper {
+	position: relative;
+	background-color: #999999;
+    margin: 60px auto;
+    display: block;
+    border: 1px solid #999999;
+}
+
+.c-game-value {
+    display: block;
+    bottom: 0;
+    position: relative;
+    padding: 40px;
+    background-color: #AAAAAA;
+    width: calc(100% - 80px);
+    color: "#FFFFFF";
+    font-weight: 100;
+    font-size: .95em;
+    color: #333333;
+
+    .c-number-of-cards-error {
+        color: red;
+        font-weight: bold;
+        font-style: italic;
+    }
+}
